@@ -1,7 +1,7 @@
 import {} from "react";
 
-const Logo = () => {
-  return <div>Logo</div>;
+const Logo = ({width = "100%"}) => {
+  return <div className={`w-[${width}]`}>Logo</div>;
 };
 
 export default Logo;

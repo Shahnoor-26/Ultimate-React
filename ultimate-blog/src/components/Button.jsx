@@ -12,7 +12,7 @@ const Button = ({
     <button
       type={type}
       className={`px-4 py-2 rounded-lg ${backgroundColor} ${textColor} ${className}`}
-      {...props}
+      {...props} // {...props} means {attributes = {attributes}}
     >
       {children}
     </button>
