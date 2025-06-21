@@ -1,9 +1,72 @@
-import React from 'react'
+import {} from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { Container, Logo, Logout } from "../index.js";
 
 const Header = () => {
-  return (
-    <div>Header</div>
-  )
-}
+  const authStatus = useSelector((state) => state.auth.status);
+  const navigate = useNavigate();
 
-export default Header
+  const paths = [
+    {
+      name: "Home",
+      slug: "/",
+      active: true,
+    },
+    {
+      name: "Login",
+      slug: "/login",
+      active: !authStatus,
+    },
+    {
+      name: "Signup",
+      slug: "/signup",
+      active: !authStatus,
+    },
+    {
+      name: "All Posts",
+      slug: "/all-posts",
+      active: authStatus,
+    },
+    {
+      name: "Add Post",
+      slug: "/add-post",
+      active: authStatus,
+    },
+  ];
+  return (
+    <header className="py-3 shadow bg-gray-500">
+      <Container>
+        <nav className="flex">
+          <div className="mr-4">
+            <Link to={"/"}>
+              <Logo />
+            </Link>
+          </div>
+          <ul className="flex ml-auto">
+            {paths.map((path) =>
+              path.active ? (
+                <li key={path.name}>
+                  <button
+                    type="button"
+                    onClick={() => navigate(path.slug)}
+                    className="inline-bock px-6 py-2 duration-200 hover:bg-blue-100 rounded-full"
+                  >
+                    {path.name}
+                  </button>
+                </li>
+              ) : null
+            )}
+            {authStatus && (
+              <li>
+                <Logout />
+              </li>
+            )}
+          </ul>
+        </nav>
+      </Container>
+    </header>
+  );
+};
+
+export default Header;
