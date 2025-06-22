@@ -1,6 +1,5 @@
-import {} from "react";
-import { Logo } from "../index.js";
 import { Link } from "react-router-dom";
+import { Logo } from "../index";
 
 const Footer = () => {
   return (

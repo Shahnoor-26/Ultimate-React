@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { service } from "../appwrite/configure.js";
+import { service } from "../appwrite/configure";
 
 const Card = ({ $id, title, picture }) => {
   return (

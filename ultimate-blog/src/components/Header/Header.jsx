@@ -1,10 +1,9 @@
-import {} from "react";
-import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { Container, Logo, Logout } from "../index.js";
+import { Link, useNavigate } from "react-router-dom";
+import { Container, Logout, Logo } from "../index";
 
 const Header = () => {
-  const authStatus = useSelector((state) => state.auth.status);
+  const isAuthenticated = useSelector((state) => state.auth.status);
   const navigate = useNavigate();
 
   const paths = [
@@ -16,22 +15,22 @@ const Header = () => {
     {
       name: "Login",
       slug: "/login",
-      active: !authStatus,
+      active: !isAuthenticated,
     },
     {
       name: "Signup",
       slug: "/signup",
-      active: !authStatus,
+      active: !isAuthenticated,
     },
     {
       name: "All Posts",
       slug: "/all-posts",
-      active: authStatus,
+      active: isAuthenticated,
     },
     {
       name: "Add Post",
       slug: "/add-post",
-      active: authStatus,
+      active: isAuthenticated,
     },
   ];
   return (
@@ -57,7 +56,7 @@ const Header = () => {
                 </li>
               ) : null
             )}
-            {authStatus && (
+            {isAuthenticated && (
               <li>
                 <Logout />
               </li>

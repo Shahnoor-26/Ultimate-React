@@ -1,6 +1,6 @@
-import { auth } from "../appwrite/auth.js";
 import { useDispatch } from "react-redux";
-import { logout } from "../store/authSlice.js";
+import { auth } from "../../appwrite/auth";
+import { logout as logoutStore } from "../../store/authSlice";
 
 const Logout = () => {
   const dispatch = useDispatch();
@@ -8,7 +8,7 @@ const Logout = () => {
   const handlerLogout = () => {
     auth
       .logout()
-      .then(() => dispatch(logout()))
+      .then(() => dispatch(logoutStore()))
       .catch((error) => console.log("logout service error:", error));
   };
 
