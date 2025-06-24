@@ -70,9 +70,11 @@ const Login = () => {
               type="password"
               {...register("password", { required: true })}
             />
-            <button type="submit" className="w-full">
-              Log In
-            </button>
+            <Button
+              type="submit"
+              children={"Log In"}
+              className="w-full cursor-pointer"
+            />
           </div>
         </form>
       </div>

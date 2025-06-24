@@ -74,9 +74,11 @@ const Signup = () => {
               placeholder="Enter your password"
               {...register("password", { required: true })}
             />
-            <button type="submit" className="w-full">
-              Create Account
-            </button>
+            <Button
+              type="submit"
+              children={"Create Account"}
+              className="w-full cursor-pointer"
+            />
           </div>
         </form>
       </div>

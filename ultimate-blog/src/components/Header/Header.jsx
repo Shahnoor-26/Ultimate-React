@@ -1,9 +1,10 @@
 import { useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import { Container, Logout, Logo } from "../index";
+import { Container, Logout, Logo } from "../index.js";
 
 const Header = () => {
   const isAuthenticated = useSelector((state) => state.auth.status);
+
   const navigate = useNavigate();
 
   const paths = [
@@ -33,6 +34,7 @@ const Header = () => {
       active: isAuthenticated,
     },
   ];
+
   return (
     <header className="py-3 shadow bg-gray-500">
       <Container>

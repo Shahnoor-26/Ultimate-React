@@ -2,7 +2,7 @@ import { useCallback, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { Button, Input, EditorBox } from "../index";
+import { Button, Input, EditorBox, Select } from "../index";
 import { service } from "../../appwrite/configure";
 
 const PostForm = ({ post }) => {
@@ -88,7 +88,7 @@ const PostForm = ({ post }) => {
             });
           }}
         />
-        <RTE
+        <EditorBox
           label="Content :"
           name="content"
           control={control}
@@ -118,11 +118,7 @@ const PostForm = ({ post }) => {
           className="mb-4"
           {...register("status", { required: true })}
         />
-        <Button
-          type="submit"
-          bgColor={post ? "bg-green-500" : undefined}
-          className="w-full"
-        >
+        <Button type="submit" className="w-full bg-gray-500">
           {post ? "Update" : "Submit"}
         </Button>
       </div>

@@ -1,12 +1,7 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { Provider } from "react-redux";
-import {
-  createBrowserRouter,
-  createRoutesFromElements,
-  Route,
-  RouterProvider,
-} from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { store } from "./store/store";
 import Layout from "./Layout";
 import {
@@ -22,52 +17,64 @@ import Protected from "./components/Protected";
 import "./index.css";
 
 const router = createBrowserRouter([
-  createRoutesFromElements(
-    <Route path="/" element={<Layout />}>
-      <Route path="/" element={<Home />} />
-      <Route
-        path="/login"
-        element={
+  {
+    path: "/",
+    element: <Layout />,
+    children: [
+      {
+        path: "/",
+        element: <Home />,
+      },
+      {
+        path: "/login",
+        element: (
           <Protected authentication={false}>
             <Login />
           </Protected>
-        }
-      />
-      <Route
-        path="/signup"
-        element={
+        ),
+      },
+      {
+        path: "/signup",
+        element: (
           <Protected authentication={false}>
             <Signup />
           </Protected>
-        }
-      />
-      <Route
-        path="/all-posts"
-        element={
-          <Protected authentication={true}>
-            {""}
+        ),
+      },
+      {
+        path: "/all-posts",
+        element: (
+          <Protected>
             <AllPosts />
           </Protected>
-        }
-      />
-      <Route
-        path="/add-post"
-        element={
-          <Protected authentication={true}>
+        ),
+      },
+      {
+        path: "/add-post",
+        element: (
+          <Protected>
             <AddPost />
           </Protected>
-        }
-      />
-      <Route
-        path="/edit-post/:slug"
-        element={
-          <Protected authentication={true}>
+        ),
+      },
+      {
+        path: "/edit-post/:slug",
+        element: (
+          <Protected>
             <EditPost />
           </Protected>
-        }
-      />
-    </Route>
-  ),
+        ),
+      },
+      {
+        path: "/post/:slug",
+        element: (
+          <Protected>
+            <Post />
+          </Protected>
+        ),
+      },
+    ],
+  },
 ]);
 
 createRoot(document.getElementById("root")).render(
