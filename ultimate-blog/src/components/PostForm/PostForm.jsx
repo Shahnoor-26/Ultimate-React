@@ -21,6 +21,7 @@ const PostForm = ({ post }) => {
   const userdata = response.userdata;
 
   const submit = async (data) => {
+
     if (post) {
       const file = data.image[0]
         ? await service.fileUpload(data.image[0])
@@ -37,12 +38,15 @@ const PostForm = ({ post }) => {
     } else {
       const file = await service.fileUpload(data.image[0]);
 
+
       if (file) {
         const fileId = file.$id;
-        data.picture = fileId;
+        
+
         const dbPost = await service.createPost({
           ...data,
           userId: userdata.$id ? userdata.$id : "",
+          picture: fileId  
         });
 
         if (dbPost) navigate(`/post/${dbPost.$id}`);
@@ -75,15 +79,15 @@ const PostForm = ({ post }) => {
     <form onSubmit={handleSubmit(submit)} className="flex flex-wrap">
       <div className="w-2/3 px-2">
         <Input
-          label="Title: "
-          placeholder="Title"
+          label="title: "
+          placeholder="title"
           className="mb-4"
           {...register("title", { required: true })}
         />
 
         <Input
-          label="Slug: "
-          placeholder="Slug"
+          label="slug: "
+          placeholder="slug"
           className="mb-4"
           {...register("slug", { required: true })}
           onInput={(e) => {
@@ -93,8 +97,8 @@ const PostForm = ({ post }) => {
           }}
         />
         <EditorBox
-          label="Content: "
-          name="Content"
+          label="content: "
+          name="content"
           control={control}
           defaultValue={getValues("content")}
         />

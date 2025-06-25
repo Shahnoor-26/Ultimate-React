@@ -31,26 +31,19 @@ const Post = () => {
       }
     });
   };
+
   return post ? (
     <div className="py-8">
       <Container>
         <div className="w-full flex justify-center mb-4 relative border rounded-xl p-2">
-          <img
-            src={service.filePreview(post.picture)}
-            alt={post.title}
-            className="rounded-xl"
-          />
+          <img alt={post.title} className="rounded-xl" />
 
           {isAuthor && (
             <div className="absolute right-6 top-6">
               <Link to={`/edit-post/${post.$id}`}>
-                <Button  className="mr-3">
-                  Edit
-                </Button>
+                <Button className="mr-3">Edit</Button>
               </Link>
-              <Button  onClick={deletePost}>
-                Delete
-              </Button>
+              <Button onClick={deletePost}>Delete</Button>
             </div>
           )}
         </div>
