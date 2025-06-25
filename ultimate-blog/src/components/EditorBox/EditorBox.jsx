@@ -10,7 +10,7 @@ const EditorBox = ({ name, label, control, defaultValue = "" }) => {
         control={control}
         render={({ field: { onChange } }) => (
           <Editor
-          apiKey="ugjmaeffmuickmg1eozvqux7d6xr9y3nuia10tyh94du1kuj"
+            apiKey="ugjmaeffmuickmg1eozvqux7d6xr9y3nuia10tyh94du1kuj"
             initialValue={defaultValue}
             init={{
               initialValue: defaultValue,

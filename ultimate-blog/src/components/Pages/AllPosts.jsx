@@ -6,7 +6,7 @@ const AllPosts = () => {
   const [posts, updatePosts] = useState([]);
 
   useEffect(() => {}, []);
-  service.findPosts([]).then((posts) => {
+  service.findPosts().then((posts) => {
     if (posts) updatePosts(posts.documents);
   });
   return (

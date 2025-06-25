@@ -16,18 +16,18 @@ export class DataService {
   }
 
   // database methods
-  createPost = async (slug, { title, content, picture, status, userid }) => {
+  createPost = async ({ title, content, picture, status, userId, slug }) => {
     try {
       return await this.database.createDocument(
         configure.appwriteDatabaseID,
         configure.appwriteCollectionID,
-        slug,
+        String(slug),
         {
           title,
           content,
           picture,
           status,
-          userid,
+          userId,
         }
       );
     } catch (error) {
