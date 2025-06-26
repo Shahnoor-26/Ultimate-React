@@ -2,8 +2,12 @@ import { Link } from "react-router-dom";
 import { service } from "../appwrite/configure";
 
 const Card = ({ $id, title, picture }) => {
+<<<<<<< HEAD
   const url = `${service.filePreview(picture)}&mode=admin`;
   console.log(url);
+=======
+  const url = `${service.filePreview(picture)}`;
+>>>>>>> af21455ef8e03e448a7c84c08b900ba99c539cff
 
   return (
     <Link to={`/post/${$id}`}>
