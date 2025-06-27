@@ -49,9 +49,9 @@ class AuthService {
     try {
       const userdata = await this.account.get();
       if (userdata) return userdata;
-      else return false;
     } catch (error) {
       console.log("Appwrite Service Error - Current User", error);
+      return false;
     }
   };
 }
